@@ -1,4 +1,4 @@
-package com.lrn.spring.jpa.entities;
+package com.lrn.tx.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -26,49 +26,46 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "singer")
-@NamedQueries({
-	@NamedQuery(name=Singer.FIND_ALL, query="select s from Singer s"),
-	@NamedQuery(name=Singer.FIND_SINGER_BY_ID, 
-	query="select distinct s from Singer s left join fetch s.albums a left join fetch s.instruments i where s.id= :id"),
-	@NamedQuery(name=Singer.FIND_ALL_WITH_ALBUM,
-	query="select distinct s from Singer s left join fetch s.albums a left join fetch s.instruments i")
-})
-@SqlResultSetMapping(name = "singerResult", entities = @EntityResult(entityClass = Singer.class))
+@NamedQueries({ @NamedQuery(name = Singer.FIND_ALL, query = "select s from Singer s"),
+		@NamedQuery(name = Singer.COUNT_ALL, query = "select count(s) from Singer s") })
 public class Singer implements Serializable {
+	/*
+	 * public static final String FIND_ALL = "Singer.findAll"; public static final
+	 * String FIND_SINGER_BY_ID = "Singer.findById"; public static final String
+	 * FIND_ALL_WITH_ALBUM = "Singer.findAllWithAlbum";
+	 */
 	public static final String FIND_ALL = "Singer.findAll";
-	public static final String FIND_SINGER_BY_ID = "Singer.findById";
-	public static final String FIND_ALL_WITH_ALBUM = "Singer.findAllWithAlbum";
+	public static final String COUNT_ALL = "Singer.countAll";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
-	
+
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
+
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "BIRTH_DATE")
 	private Date birthDate;
-	
+
 	@Version
 	@Column(name = "VERSION")
 	private int version;
 
-
 	@OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Album> albums = new HashSet<>();
 
-
-	@ManyToMany
-	@JoinTable(name = "singer_instrument",
-		joinColumns = @JoinColumn(name = "SINGER_ID"),
-		inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
-	private Set<Instrument> instruments = new HashSet<>();
-	
+	/*
+	 * @ManyToMany
+	 * 
+	 * @JoinTable(name = "singer_instrument", joinColumns = @JoinColumn(name =
+	 * "SINGER_ID"), inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
+	 * private Set<Instrument> instruments = new HashSet<>();
+	 */
 	public Set<Album> getAlbums() {
 		return albums;
 	}
@@ -86,17 +83,13 @@ public class Singer implements Serializable {
 		this.albums = albums;
 	}
 
+	/*
+	 * public Set<Instrument> getInstruments() { return instruments; }
+	 * 
+	 * public void setInstruments(Set<Instrument> instruments) { this.instruments =
+	 * instruments; }
+	 */
 
-
-	public Set<Instrument> getInstruments() {
-		return instruments;
-	}
-
-	public void setInstruments(Set<Instrument> instruments) {
-		this.instruments = instruments;
-	}
-
-	
 	public Long getId() {
 		return id;
 	}
@@ -104,7 +97,6 @@ public class Singer implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getFirstName() {
 		return firstName;
@@ -114,7 +106,6 @@ public class Singer implements Serializable {
 		this.firstName = firstName;
 	}
 
-
 	public String getLastName() {
 		return lastName;
 	}
@@ -122,7 +113,6 @@ public class Singer implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 
 	public Date getBirthDate() {
 		return birthDate;
@@ -132,7 +122,6 @@ public class Singer implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	
 	public int getVersion() {
 		return version;
 	}

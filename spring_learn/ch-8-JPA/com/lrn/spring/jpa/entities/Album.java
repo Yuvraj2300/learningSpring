@@ -8,6 +8,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "album")
 public class Album implements Serializable {
+	public Album() {
+		// needed byJPA
+	}
+
 	private Long id;
 	private String title;
 	private Date releaseDate;

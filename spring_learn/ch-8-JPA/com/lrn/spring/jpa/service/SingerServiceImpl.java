@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
@@ -28,19 +29,21 @@ public class SingerServiceImpl implements SingerService {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Singer> findAll() {
-		throw new NotImplementedException("findAll");
+		return em.createNamedQuery(Singer.FIND_ALL, Singer.class).getResultList();
 	}
 
 	@Transactional(readOnly = true)
 	@Override
 	public List<Singer> findAllWithAlbum() {
-		throw new NotImplementedException("findAllWithAlbum");
+		List<Singer> singers = em.createNamedQuery(Singer.FIND_ALL_WITH_ALBUM, Singer.class).getResultList();
+		return singers;
 	}
 
 	@Transactional(readOnly = true)
 	@Override
 	public Singer findById(Long id) {
-		throw new NotImplementedException("findById");
+		TypedQuery<Singer> q = em.createNamedQuery(Singer.FIND_SINGER_BY_ID, Singer.class).setParameter("id", id);
+		return q.getSingleResult();
 	}
 
 	@Override
