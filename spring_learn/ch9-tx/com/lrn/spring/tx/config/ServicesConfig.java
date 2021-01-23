@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "com.lrn.tx.spring" })
+@ComponentScan(basePackages = { "com.lrn.spring.tx" })
 public class ServicesConfig {
 	@Autowired
 	@Qualifier("emf")

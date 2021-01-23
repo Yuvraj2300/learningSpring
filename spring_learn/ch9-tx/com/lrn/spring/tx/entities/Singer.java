@@ -1,4 +1,4 @@
-package com.lrn.tx.spring.entities;
+package com.lrn.spring.tx.entities;
 
 import java.io.Serializable;
 import java.util.Date;

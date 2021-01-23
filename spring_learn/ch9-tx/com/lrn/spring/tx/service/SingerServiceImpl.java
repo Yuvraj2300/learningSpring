@@ -1,6 +1,7 @@
-package com.lrn.tx.spring.service;
+package com.lrn.spring.tx.service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
-import com.lrn.tx.spring.entities.Singer;
-import com.lrn.tx.spring.repos.SingerRepository;
+import com.lrn.spring.tx.entities.Singer;
+import com.lrn.spring.tx.repos.SingerRepository;
 
 @Service("singerService")
 @Transactional
@@ -30,6 +31,18 @@ public class SingerServiceImpl implements SingerService {
 	@Transactional(readOnly = true)
 	public ArrayList<Singer> findAll() {
 		return Lists.newArrayList(singerRep.findAll());
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Singer save(Singer singer) {
+		return singerRep.save(singer);
+	}
+
+	@Override
+	public Singer findById(Long id) {
+		Optional<Singer> singerOp = singerRep.findById(id);
+		return singerOp.get();
 	}
 
 }
