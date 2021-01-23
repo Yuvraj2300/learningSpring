@@ -14,12 +14,15 @@ import javax.persistence.criteria.Root;
 import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.common.collect.Lists;
 import com.lrn.spring.jpa.entities.Singer;
 import com.lrn.spring.jpa.entities.Singer_;
+import com.lrn.spring.jpa.service.repository.SingerRepository;
 
 @Service("jpaSingerService")
 @Repository
@@ -29,6 +32,9 @@ public class SingerServiceImpl implements SingerService {
 
 	private static Logger logger = LoggerFactory.getLogger(SingerServiceImpl.class);
 
+	@Autowired
+	private SingerRepository singerRep;
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -36,8 +42,9 @@ public class SingerServiceImpl implements SingerService {
 	@Override
 	public List<Singer> findAll() {
 //		return em.createNamedQuery(Singer.FIND_ALL, Singer.class).getResultList();
-		return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY, "singerResult").getResultList();
-
+		// return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY,
+		// "singerResult").getResultList();
+		return Lists.newArrayList(singerRep.findAll());
 	}
 
 	@Transactional(readOnly = true)
@@ -96,6 +103,20 @@ public class SingerServiceImpl implements SingerService {
 
 		criteriaQuery.where(criteria);
 		return em.createQuery(criteriaQuery).getResultList();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Singer> findByFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		return singerRep.findByFirstName(firstName);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Singer> findByFirstNameAndLastName(String firstName, String lastName) {
+		// TODO Auto-generated method stub
+		return singerRep.findByFirstNameAndLastName(firstName, lastName);
 	}
 
 }

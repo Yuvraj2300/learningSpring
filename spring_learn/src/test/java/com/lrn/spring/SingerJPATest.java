@@ -2,6 +2,7 @@ package com.lrn.spring;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,6 +44,30 @@ public class SingerJPATest {
 	 * singerService.findAll(); assertEquals(3, singers.size());
 	 * listSingers(singers); }
 	 */
+
+	@Test
+	public void testFindAll() {
+		List<Singer> singers = singerService.findAll();
+		assertTrue(singers.size() > 0);
+		listSingers(singers);
+	}
+
+	@Test
+	public void testFindByFirstName() {
+		List<Singer> singers = singerService.findByFirstName("John");
+		assertTrue(singers.size() > 0);
+		assertEquals(2, singers.size());
+		listSingers(singers);
+	}
+
+	@Test
+	public void testFindByFirstNameAndLastName() {
+		List<Singer> singers = singerService.findByFirstNameAndLastName("John", "Mayer");
+		assertTrue(singers.size() > 0);
+		assertEquals(1, singers.size());
+		listSingers(singers);
+	}
+
 	private static void listSingers(List<Singer> singers) {
 		logger.info(" ---- Listing singers:");
 		for (Singer singer : singers) {
@@ -50,7 +75,6 @@ public class SingerJPATest {
 		}
 	}
 
-	
 	public void testFindAllWithAlbum() {
 		List<Singer> singers = singerService.findAllWithAlbum();
 		assertEquals(3, singers.size());
