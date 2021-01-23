@@ -10,7 +10,6 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import com.lrn.spring.tx.config.DataJpaConfig;
 import com.lrn.spring.tx.config.ServicesConfig;
-import com.lrn.spring.tx.entities.Album;
 import com.lrn.spring.tx.entities.Singer;
 import com.lrn.spring.tx.service.SingerService;
 
@@ -25,7 +24,9 @@ public class Demo {
 			System.out.println(s);
 		});
 		System.out.println(singer.toString());
-		
+		System.out.println("---------------------------Number of Singers---------------------------");
+		System.out.println(singerService.countSingers());
+		System.out.println("---------------------------Number of Singers---------------------------");
 		/*Singer drake = new Singer();
 		drake.setFirstName("Aubrey");
 		drake.setLastName("Graham");

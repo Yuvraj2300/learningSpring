@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
@@ -43,6 +44,13 @@ public class SingerServiceImpl implements SingerService {
 	public Singer findById(Long id) {
 		Optional<Singer> singerOp = singerRep.findById(id);
 		return singerOp.get();
+	}
+
+	@Override
+	@Transactional(propagation=Propagation.NEVER)
+	public Long countSingers() {
+		// TODO Auto-generated method stub
+		return singerRep.countSingers();
 	}
 
 }

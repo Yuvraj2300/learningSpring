@@ -12,4 +12,6 @@ public interface SingerService {
 
 	Singer save(Singer singer);
 
+	Long countSingers();
+
 }

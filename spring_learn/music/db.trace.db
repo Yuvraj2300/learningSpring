@@ -1,0 +1,15 @@
+2021-01-23 17:37:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INSTRUMENT" not found; SQL statement:
+insert into instrument (instrument_id) values ('Guitar') [42102-200]
+2021-01-23 17:39:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INSTRUMENT" not found; SQL statement:
+insert into instrument (instrument_id) values ('Guitar') [42102-200]
+2021-01-23 17:39:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SINGER" not found; SQL statement:
+insert into singer (first_name, last_name, birth_date) values ('John', 'Mayer', '1977-10-16') [42102-200]
+2021-01-23 17:40:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SINGER" not found; SQL statement:
+insert into singer (first_name, last_name, birth_date) values ('John', 'Mayer', '1977-10-16') [42102-200]
+2021-01-23 17:40:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SINGER" not found; SQL statement:
+insert into singer (first_name, last_name, birth_date) values ('John', 'Mayer', '1977-10-16') [42102-200]
