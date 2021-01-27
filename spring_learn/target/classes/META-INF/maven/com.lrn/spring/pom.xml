@@ -195,6 +195,18 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>5.2.12.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hornetq/hornetq-jms-client -->
+		<dependency>
+			<groupId>org.hornetq</groupId>
+			<artifactId>hornetq-jms-client</artifactId>
+			<version>2.4.7.Final</version>
+		</dependency>
 
 	</dependencies>
 </project>
