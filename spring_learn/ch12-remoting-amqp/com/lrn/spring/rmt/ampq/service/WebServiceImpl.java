@@ -1,5 +1,8 @@
 package com.lrn.spring.rmt.ampq.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class WebServiceImpl implements WeatherService {
 
 	@Override
