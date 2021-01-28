@@ -46,6 +46,7 @@ public class AppConfig {
 		return factory;
 	}
 
+	@Bean
 	JmsTemplate jmsTemplate() {
 		JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
 		jmsTemplate.setDefaultDestination(prospring5());
