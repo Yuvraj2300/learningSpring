@@ -5,13 +5,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.lrn.spring.rmt.rest.model.Singer;
 import com.lrn.spring.rmt.rest.model.Singers;
-import com.lrn.spring.rmt.rest.service.SingerSerivice;
+import com.lrn.spring.rmt.rest.service.SingerService;
 
 @Controller
 @RequestMapping("/singer")
@@ -19,7 +22,7 @@ public class SingerController {
 	final Logger logger = LoggerFactory.getLogger(SingerController.class);
 
 	@Autowired
-	SingerSerivice singerService;
+	SingerService singerService;
 
 	@ResponseStatus(code = HttpStatus.OK)
 	@ResponseBody
