@@ -29,6 +29,7 @@
 	<classpathentry kind="src" path="ch12-remoting-jms"/>
 	<classpathentry kind="src" path="ch12-remoting-rest"/>
 	<classpathentry kind="src" path="ch12-remoting-amqp"/>
+	<classpathentry kind="src" path="ch16-webapps"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
