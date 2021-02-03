@@ -1,6 +1,7 @@
 package com.lrn.spring.web.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -14,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -106,6 +108,16 @@ public class Singer implements Serializable {
 
 	public void setPhoto(byte photo) {
 		this.photo = photo;
+	}
+
+	@Transient
+	public String getBirthDateString() {
+		String birthDateString = "";
+		if (birthDateString != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			birthDateString = sdf.format(birthDate);
+		}
+		return birthDateString;
 	}
 
 	@Override
